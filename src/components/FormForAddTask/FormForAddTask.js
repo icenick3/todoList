@@ -4,29 +4,34 @@ import './FormForAddTask.css'
 import {useForm} from "react-hook-form";
 import {doc,collection, addDoc, getDocs, setDoc} from "firebase/firestore";
 import {db} from "../../firebase";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setTask} from "../../store/slices/taskSlice";
 
 
-const FormForAddTask = ({sendTasks}) => {
+
+const FormForAddTask = ({sendTasks, idForDelete, idForUpdate}) => {
 
     const [name, setName] = useState(null)
     const [description, setDescription] = useState(null)
     const {handleSubmit, reset, register} = useForm()
     const user = useSelector(state => state.user)
     const [tasks, setTasks] = useState([])
+    const dispatch = useDispatch()
+
+
+
 
     useEffect(() => {
            if (name && description){
             try {
                 const addTodo = async () => {
-                    console.log(ref)
                     const docRef = await addDoc(collection(db, user.email), {
                         name: name,
                         description: description,
                         date: new Date().toLocaleDateString("en-Us"),
-                        id: new Date().getTime()
+
                     });
-                    console.log("Document written with ID: ", docRef.id);
+                    console.log(docRef);
                 }
                 addTodo()
             } catch (e) {
@@ -36,17 +41,19 @@ const FormForAddTask = ({sendTasks}) => {
     }, [name])
 
 
-
+    useEffect(()=> {
+        setTasks(tasks.filter(task => task.id !== idForDelete))
+    }, [idForDelete])
 
     useEffect(()=>{
         if (user.email){
             const getTasks = async ()=> {
                 const data = await getDocs(collection(db, user.email));
-                setTasks(data.docs.map(task => ({...task.data()})))
+                data.docs.map((task) => dispatch(setTask({...task.data(), id: task.id})))
             }
             getTasks()
         }
-    },[name|| user])
+    },[name || user])
 
     sendTasks(tasks)
 
