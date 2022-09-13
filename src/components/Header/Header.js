@@ -15,8 +15,8 @@ const Header = ({sendTasks, idForDelete, idForUpdate}) => {
             <div className={'flex'}>
                 <ButtonForAddTask sendTasks={sendTasks} idForDelete={idForDelete} idForUpdate={idForUpdate}/>
             <ButtonForLogin/>
-                <p>{email}</p>
             </div>
+            {email && <h2>You entered as {email}</h2>}
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 
 import {removeUser} from "../../../store/slices/userSlice";
+import './ButtonForLogout.css'
 
 const ButtonForLogout = () => {
 
@@ -13,7 +14,7 @@ const ButtonForLogout = () => {
 
     return (
         <div>
-            <button onClick={()=>onClick()}>Log Out</button>
+            <button className={'button-logout'} onClick={()=>onClick()}>Log Out</button>
         </div>
     );
 };

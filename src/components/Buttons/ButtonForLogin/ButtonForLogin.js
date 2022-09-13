@@ -10,9 +10,11 @@ const ButtonForLogin = () => {
     const [modalActive, setModalActive] = useState(false)
     const {email} = useSelector(state => state.user)
 
+
+
     return (
         <div>
-            {!email && <button className={'signIn'} onClick={() => setModalActive(true)}>log In</button>}
+            {!email && <button className={'button-login'} onClick={()=> setModalActive(true)}>log In</button>}
             {email && <ButtonForLogout/>}
             <ModalWindowForRegistration active={modalActive} setActive={setModalActive}/>
         </div>
