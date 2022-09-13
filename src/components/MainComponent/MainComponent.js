@@ -10,12 +10,9 @@ const MainComponent = () => {
     const [idForDelete, setIdForDelete] = useState(null)
     const [idForUpdate, setIdUpdate] = useState(null)
 
-
-
     const sendTasks = (tasks) => {
         setTasks(tasks)
     }
-
     const getId = (id) => {
         setIdForDelete(id)
     }

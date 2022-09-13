@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto+Mono:ital,wght@1,500&display=swap');
 .header {
     width: 100%;
     height: 150px;
-    background: green;
+    background: black;
 }
 
 h1{
     text-align: center;
     padding: 20px;
+    color: white;
+    font-family: "Oswald" , sans-serif;
 }
 
 .flex{

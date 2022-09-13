@@ -1,22 +1,21 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 
 import "./Header.css"
-import FormForAddTask from "../FormForAddTask/FormForAddTask";
-import LoginButton from "../LoginButton/LoginButton";
-import {useSelector} from "react-redux";
+import ButtonForLogin from "../Buttons/ButtonForLogin/ButtonForLogin";
+import ButtonForAddTask from "../Buttons/ButtonForAddTask/ButtonForAddTask";
 
 const Header = ({sendTasks, idForDelete, idForUpdate}) => {
 
-
-    const user = useSelector(state => state.user)
+    const {email} = useSelector(state => state.user)
 
     return (
         <div className={"header"}>
             <h1>What's the Plan for Today?</h1>
             <div className={'flex'}>
-            <FormForAddTask sendTasks={sendTasks} idForDelete={idForDelete} idForUpdate={idForUpdate}/>
-            <LoginButton/>
-                <p>{user.email}</p>
+                <ButtonForAddTask sendTasks={sendTasks} idForDelete={idForDelete} idForUpdate={idForUpdate}/>
+            <ButtonForLogin/>
+                <p>{email}</p>
             </div>
         </div>
     );

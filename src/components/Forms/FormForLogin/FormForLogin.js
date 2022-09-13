@@ -1,24 +1,23 @@
 import React, {useState} from 'react';
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import {useForm} from "react-hook-form";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useDispatch} from "react-redux";
-import {setUser} from "../../store/slices/userSlice";
 
-const FormForRegistration = ({handleClick}) => {
+import './FormForLogin.css'
+import {setUser} from "../../../store/slices/userSlice";
+
+const FormForLogin = ({setLogin}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const auth = getAuth();
     const {handleSubmit, reset} = useForm();
     const dispatch = useDispatch()
 
-    const auth = getAuth();
-
     const onSubmit = () => {
-        reset()
-        createUserWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,
@@ -31,18 +30,20 @@ const FormForRegistration = ({handleClick}) => {
                 console.log(errorCode)
                 console.log(errorMessage)
             });
-
+        reset()
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input type="email"  onChange={(e) => setEmail(e.target.value)}/>
-                <input type="password" onChange={(e) => setPassword(e.target.value)}/>
-                <button>Registry</button>
+                <input type="password"  onChange={(e) => setPassword(e.target.value)}/>
+                <button>Login</button>
+                or
+                <button onClick={() => {setLogin(false)}}>Registration</button>
             </form>
         </div>
     );
 };
 
-export {FormForRegistration};
+export {FormForLogin};

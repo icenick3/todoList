@@ -1,16 +1,13 @@
 import React from 'react';
-import {deleteDoc, doc, updateDoc} from "firebase/firestore";
+import {deleteDoc, doc} from "firebase/firestore";
 import {db} from "../../firebase";
 import {useSelector} from "react-redux";
 
+import ButtonForChangeTask from "../Buttons/ButtonForChangeTask/ButtonForChangeTask";
 
-const Task = ({task, takeId, getIdForUpdate}) => {
-
+const Task = ({getId, task, getIdForUpdate}) => {
 
     const {email} = useSelector(state => state.user)
-
-
-
 
     const deleteTask = () => {
         const docRef = doc(db, email, task.id);
@@ -18,34 +15,16 @@ const Task = ({task, takeId, getIdForUpdate}) => {
             .then(() => {
                 (console.log('file delete'))
             })
-        takeId(task.id)
+        getId(task.id)
     }
-
-
-    const update = (id) => {
-        const updateTask = async () => {
-            const taskDoc = doc(db,email ,id)
-            await updateDoc(taskDoc, {
-                name: "complete655656"
-            })
-
-        }
-        updateTask()
-        getIdForUpdate(task.id)
-    }
-
-
-
-
-
-
 
     return (
         <div>
-            Name - {task.name}
-            Description - {task.description}
+            <div>Name: {task.name}</div>
+            <div>Description: {task.description}</div>
+            <div>Date: {task.date} {task.time}</div>
             <button onClick={()=>{deleteTask()}}>Delete</button>
-            <button onClick={()=>{update(task.id)}}>Change</button>
+            <ButtonForChangeTask task={task} getIdForUpdate={getIdForUpdate} email={email}/>
         </div>
     );
 };

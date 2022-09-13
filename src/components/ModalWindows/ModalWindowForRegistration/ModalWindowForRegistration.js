@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 
-import './ModalWindow.css'
-import {FormForLogin}from "../FormForLogin/FormForLogin";
-import {FormForRegistration} from "../FormForRegistration/FormForRegistration";
+import './ModalWindowForRegistration.css'
+import {FormForLogin}from "../../Forms/FormForLogin/FormForLogin";
+import {FormForRegistration} from "../../Forms/FormForRegistration/FormForRegistration";
 
-const ModalWindow = ({active, setActive}) => {
+const ModalWindowForRegistration = ({active, setActive}) => {
 
     const [login, setLogin] = useState(true)
-
 
     const onClick = () => {
         setActive(false)
@@ -25,4 +24,4 @@ const ModalWindow = ({active, setActive}) => {
     );
 };
 
-export default ModalWindow;
+export default ModalWindowForRegistration;

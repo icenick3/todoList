@@ -1,21 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import Task from "../Task/Task";
+import React from 'react';
 import {useSelector} from "react-redux";
 
-const Tasks = ({tasks, getId, getIdForUpdate}) => {
+import Task from "../Task/Task";
 
-const task = useSelector(state => state.task)
-    console.log(task)
-    const takeId = (id) => {
-        getId(id)
-    }
+const Tasks = ({getId, getIdForUpdate}) => {
 
-
-
+const {task} = useSelector(state => state.task)
 
     return (
         <div>
-            {tasks.map(task => <Task task={task} takeId={takeId} getIdForUpdate={getIdForUpdate}/>)}
+            {task.map(task => <Task key={task.id} task={task} getId={getId} getIdForUpdate={getIdForUpdate}/>)}
         </div>
     );
 };

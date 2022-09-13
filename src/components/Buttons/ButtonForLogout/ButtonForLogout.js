@@ -1,15 +1,15 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {removeUser} from "../../store/slices/userSlice";
 
-const LogoutButton = () => {
+import {removeUser} from "../../../store/slices/userSlice";
+
+const ButtonForLogout = () => {
 
     const dispatch = useDispatch()
 
     const onClick = () => {
         dispatch(removeUser())
     }
-
 
     return (
         <div>
@@ -18,4 +18,4 @@ const LogoutButton = () => {
     );
 };
 
-export default LogoutButton;
+export default ButtonForLogout;
