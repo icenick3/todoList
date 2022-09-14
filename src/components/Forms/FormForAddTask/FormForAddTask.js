@@ -10,7 +10,7 @@ import {setTask} from "../../../store/slices/taskSlice";
 
 const FormForAddTask = ({idForDelete, idForUpdate}) => {
 
-    const [target, setTarget] = useState({name: null, description: null, time: null, date: null, rgb: null})
+    const [target, setTarget] = useState({name: null, description: null, time: null, date: null})
     const {handleSubmit, reset, register} = useForm()
     const {email} = useSelector(state => state.user)
     const [tasks, setTasks] = useState([])
@@ -19,35 +19,25 @@ const FormForAddTask = ({idForDelete, idForUpdate}) => {
     useEffect(() => {
         if (target.name && target.description) {
             try {
-                const addTodo = async () => {
+                (async () => {
                     const docRef = await addDoc(collection(db, email), {
                         name: target.name,
                         description: target.description,
                         time: target.time,
                         date: target.date,
-                        rgb: getRandomRgb()
                     });
-                }
-                addTodo()
+                })()
             } catch (e) {
                 console.error(e)
             }
         }
     }, [target.name])
 
-    function getRandomRgb() {
-        let num = Math.round(0xffffff * Math.random());
-        let r = num >> 16;
-        let g = num >> 8 & 255;
-        let b = num & 255;
-        return 'rgb(' + r + ', ' + g + ', ' + b + ')';
-    }
-
     useEffect(() => {
         if (email) {
             (async () => {
                 const data = await getDocs(collection(db, email));
-                setTasks(data.docs.map((task, index) => ({...task.data(), id: task.id, number: index})))
+                setTasks(data.docs.map((task, index) => ({...task.data(), id: task.id})))
             })()
         }
     }, [target.name, email, idForUpdate, idForDelete])

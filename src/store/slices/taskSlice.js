@@ -9,6 +9,7 @@ const taskSlice = createSlice({
     reducers: {
         setTask: (state, action) => {
             state.task = action.payload
+
             state.task.sort((a, b) => {
                 if (a.time > b.name) {
                     return 1;
@@ -17,8 +18,8 @@ const taskSlice = createSlice({
                     return -1;
                 }
                 return 0
-                state.task.map
             })
+            state.task.map((task, index)=> {task.number = index})
         }
     }
 })

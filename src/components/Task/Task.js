@@ -12,8 +12,7 @@ import ButtonForChangeTask from "../Buttons/ButtonForChangeTask/ButtonForChangeT
 const Task = ({getId, task, getIdForUpdate}) => {
 
     const {email} = useSelector(state => state.user)
-    console.log(task)
-
+    const colors = ['#4C0033' , '#AF0171']
     const deleteTask = () => {
         const docRef = doc(db, email, task.id);
         deleteDoc(docRef)
@@ -22,17 +21,12 @@ const Task = ({getId, task, getIdForUpdate}) => {
             })
         getId(task.id)
     }
-
-    const colors = ['4C0033' , 'AF0171']
-    let color = ''
-    const random = () => {
-        color = colors[Math.floor(Math.random()* colors.length)]
+    const getColor = (number) => {
+        return colors[number%2];
     }
-    random()
 
-    console.log(task)
     return (
-        <div style={{background: '#'+ color}} className={'task-block'}>
+        <div style={{background: getColor(task.number)}} className={'task-block'}>
             <h4 className={'name'}>{task.name}</h4>
             <div className={'description'}>{task.description}</div>
             <div className={'date'}>Date: {task.date} {task.time}</div>

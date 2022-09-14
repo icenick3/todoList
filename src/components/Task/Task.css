@@ -45,7 +45,7 @@ svg {
     border: none;
     color: #0c1016;
     filter: url("#gooey");
-    background-color: #00FF80;
+    background-color: #FF06B7;
 }
 .gooey-button:focus {
     outline: none;
@@ -57,7 +57,7 @@ svg {
     right: 0;
 }
 .gooey-button .bubbles .bubble {
-    background-color: #00FF80;
+    background-color: #FF06B7;
     border-radius: 100%;
     position: absolute;
     top: 0;
