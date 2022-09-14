@@ -64,7 +64,7 @@ const FormForLogin = ({setActive}) => {
                             <label className={'label'} htmlFor="chk" aria-hidden="true">Sign up</label>
                                 <input className={'input'} type="email" name="email" placeholder="Email" required="" onChange={(e) => setEmail(e.target.value)}/>
                                     <input className={'input'} type="password" name="pswd" placeholder="Password" required="" onChange={(e) => setPassword(e.target.value)}/>
-                                        <button className={'button'} onClick={()=>setActive(false)}>Sign up</button>
+                                        <button className={'button'} onClick={()=> setActive(false)}>Sign up</button>
                         </form>
                     </div>
 
@@ -73,7 +73,7 @@ const FormForLogin = ({setActive}) => {
                             <label className={'label'} htmlFor="chk" aria-hidden="true">Login</label>
                             <input className={'input'} type="email" name="email" placeholder="Email" required="" onChange={(e) => setEmail(e.target.value)}/>
                                 <input className={'input'} type="password" name="pswd" placeholder="Password" required="" onChange={(e) => setPassword(e.target.value)}/>
-                                    <button className={'button'} onClick={()=>setActive(false)}>Login</button>
+                                    <button className={'button'} onClick={()=> setActive(false)}>Login</button>
                         </form>
                     </div>
             </div>

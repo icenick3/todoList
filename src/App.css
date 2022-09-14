@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto+Mono:ital,wght@0,300;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
-body{
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 1019px;
     box-sizing: border-box;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background-size: cover;
+    background-image: url("https://img.freepik.com/free-photo/aesthetic-leaf-frame-background-neon-botanical-design_53876-128292.jpg?w=1380&t=st=1663166048~exp=1663166648~hmac=402e7b4dd39735b3555a623ae5f28472e6ce92e4edf9e07066a05c760b75cfc6");
 }
 
-input[type = 'date']{
-    width: 188px;
-    background: dodgerblue;
-    padding: 15px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-family: "Roboto Mono", monospace;
-    font-size: 1em;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
+/*input[type = 'date']{*/
+/*    width: 188px;*/
+/*    background: dodgerblue;*/
+/*    padding: 15px;*/
+/*    position: absolute;*/
+/*    transform: translate(-50%, -50%);*/
+/*    color: white;*/
+/*    font-family: "Roboto Mono", monospace;*/
+/*    font-size: 1em;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    border-radius: 5px;*/
+/*}*/
 
-::-webkit-calendar-picker-indicator{
-    background-color: white;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 3px;
-}
+/*::-webkit-calendar-picker-indicator{*/
+/*    background-color: white;*/
+/*    padding: 5px;*/
+/*    cursor: pointer;*/
+/*    border-radius: 3px;*/
+/*}*/

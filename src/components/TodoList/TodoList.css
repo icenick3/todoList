@@ -1,0 +1,8 @@
+.todoList {
+    height: 700px;
+    overflow: auto;
+}
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}

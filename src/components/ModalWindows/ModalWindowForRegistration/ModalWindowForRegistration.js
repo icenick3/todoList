@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import './ModalWindowForRegistration.css'
 import {FormForLogin}from "../../Forms/FormForLogin/FormForLogin";
 
-const ModalWindowForRegistration = ({active, setActive}) => {
+const ModalWindowForRegistration = ({ active, setActive}) => {
 
     const onClick = () => {
         setActive(false)

@@ -17,6 +17,7 @@ const taskSlice = createSlice({
                     return -1;
                 }
                 return 0
+                state.task.map
             })
         }
     }

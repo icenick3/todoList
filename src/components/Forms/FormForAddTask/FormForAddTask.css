@@ -1,3 +1,4 @@
-.formBlock{
-    display: flex;
+.formForAddTask{
+    position: absolute;
+    background: white;
 }

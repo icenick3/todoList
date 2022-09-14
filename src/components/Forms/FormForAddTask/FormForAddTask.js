@@ -10,7 +10,7 @@ import {setTask} from "../../../store/slices/taskSlice";
 
 const FormForAddTask = ({idForDelete, idForUpdate}) => {
 
-    const [target, setTarget] = useState({name: null, description: null, time: null, date: null})
+    const [target, setTarget] = useState({name: null, description: null, time: null, date: null, rgb: null})
     const {handleSubmit, reset, register} = useForm()
     const {email} = useSelector(state => state.user)
     const [tasks, setTasks] = useState([])
@@ -24,7 +24,8 @@ const FormForAddTask = ({idForDelete, idForUpdate}) => {
                         name: target.name,
                         description: target.description,
                         time: target.time,
-                        date: target.date
+                        date: target.date,
+                        rgb: getRandomRgb()
                     });
                 }
                 addTodo()
@@ -34,13 +35,20 @@ const FormForAddTask = ({idForDelete, idForUpdate}) => {
         }
     }, [target.name])
 
+    function getRandomRgb() {
+        let num = Math.round(0xffffff * Math.random());
+        let r = num >> 16;
+        let g = num >> 8 & 255;
+        let b = num & 255;
+        return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+    }
+
     useEffect(() => {
         if (email) {
-            const getTasks = async () => {
+            (async () => {
                 const data = await getDocs(collection(db, email));
-                setTasks(data.docs.map(task => ({...task.data(), id: task.id})))
-            }
-            getTasks()
+                setTasks(data.docs.map((task, index) => ({...task.data(), id: task.id, number: index})))
+            })()
         }
     }, [target.name, email, idForUpdate, idForDelete])
 
@@ -59,12 +67,12 @@ const FormForAddTask = ({idForDelete, idForUpdate}) => {
     }
 
     return (
-        <div className={'formBlock'}>
+        <div className={'formForAddTask'}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" placeholder={'Name'} {...register('name')} />
-                <input type="text" placeholder={'Description'} {...register('description')} />
-                <input type="date" {...register('date')} />
-                <input type="time" {...register('time')} />
+                <div><input type="text" placeholder={'Name'} {...register('name')} /></div>
+                <div> <input type="text" placeholder={'Description'} {...register('description')} /></div>
+                <div><input type="date" {...register('date')} /></div>
+                <div><input type="time" {...register('time')} /></div>
                 <button>Add Task</button>
             </form>
         </div>
