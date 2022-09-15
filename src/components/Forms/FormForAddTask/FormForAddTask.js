@@ -10,14 +10,14 @@ import {setTask} from "../../../store/slices/taskSlice";
 
 const FormForAddTask = ({setActive,idForDelete, idForUpdate, getStatus}) => {
 
-    const [target, setTarget] = useState({name: null, description: null, time: null, date: null})
+    const [target, setTarget] = useState({name: null, description: null, time: null, date: new Date().toISOString().split('T')[0]})
     const {handleSubmit, reset, register} = useForm()
     const {email} = useSelector(state => state.user)
     const [tasks, setTasks] = useState([])
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (target.name && target.description) {
+        if (target.name) {
             try {
                 (async () => {
                     const docRef = await addDoc(collection(db, email), {
@@ -56,7 +56,6 @@ const FormForAddTask = ({setActive,idForDelete, idForUpdate, getStatus}) => {
         reset()
         getStatus('url("#gooey")')
         setActive(false)
-
     }
 
     return (
@@ -71,7 +70,7 @@ const FormForAddTask = ({setActive,idForDelete, idForUpdate, getStatus}) => {
                 </div>
                 <textarea id="description" placeholder={'Description'} cols="30" rows="10" {...register('description')} ></textarea>
                 <div className={'groupDate'}>
-                    <div><input type="date" {...register('date')} /></div>
+                    <div><input type="date" value={target.date} {...register('date')} /></div>
                     <div><input id="time" type="time" {...register('time')} /></div>
                     <button id="buttonAdd">Add Task</button>
                 </div>

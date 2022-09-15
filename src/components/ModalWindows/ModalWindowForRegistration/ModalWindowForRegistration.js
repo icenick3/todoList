@@ -7,6 +7,7 @@ const ModalWindowForRegistration = ({ active, setActive}) => {
 
     const onClick = () => {
         setActive(false)
+        
     }
 
     return (

@@ -10,16 +10,16 @@
 }
 
 .name {
-    margin: 5px 0 10px 5px;
+    margin: 5px 0 10px 10px;
     font-size: 30px;
 }
 
 .date {
-    margin: 3px;
+    margin: 20px 10px 0px 10px;
 }
 
 .description {
-    margin: 3px;
+    margin: 10px;
 }
 
 .deleteTask {

@@ -10,6 +10,8 @@ const ButtonForLogout = () => {
 
     const onClick = () => {
         dispatch(removeUser())
+        localStorage.setItem('email', null)
+        localStorage.setItem('password', null)
     }
 
     return (

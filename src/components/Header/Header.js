@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 
 import "./Header.css"
@@ -16,7 +16,7 @@ const Header = ({getStatus, sendTasks, idForDelete, idForUpdate}) => {
                 <ButtonForAddTask sendTasks={sendTasks} idForDelete={idForDelete} idForUpdate={idForUpdate} getStatus={getStatus}/>
             <ButtonForLogin/>
             </div>
-            {email && <h2 className={'h2'}>You logged as {email}</h2>}
+            {email && <h2 className={'h2'}>You logged in as {email}</h2>}
         </div>
     );
 };

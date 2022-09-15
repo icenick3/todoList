@@ -14,7 +14,7 @@ const ButtonForLogin = () => {
         <div>
             {!email && <button className={'button-login'} onClick={()=> {
                 setModalActive(true)
-            }}>log In</button>}
+            }}>Log In</button>}
             {email && <ButtonForLogout/>}
             <ModalWindowForRegistration active={modalActive} setActive={setModalActive} />
         </div>

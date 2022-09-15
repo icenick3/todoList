@@ -4,3 +4,26 @@
     border-radius: 15px;
     border: #FF06B7 solid 8px;
 }
+
+input[type = 'date']{
+    margin-top: 29px;
+    margin-left: 107px;
+    width: 188px;
+    background: #FF06B7;
+    padding: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 10px;
+}
+
+::-webkit-calendar-picker-indicator{
+    background-color: #FF06B7;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}

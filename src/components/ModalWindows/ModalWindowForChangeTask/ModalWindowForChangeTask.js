@@ -14,7 +14,7 @@ const ModalWindowForChangeTask = ({getStatus, task, active, setActive, getIdForU
         <div className={active ? "modalChangeTask active" : "modalChangeTask"} onClick={onClick}>
             <div className={active ? "modalChangeTask_content active" : "modalChangeTask_content"} onClick={e => {
                 e.stopPropagation()}}>
-                <FormForChangeTask getStatus={getStatus} task={task} email={email} getIdForUpdate={getIdForUpdate}/>
+                <FormForChangeTask getStatus={getStatus} task={task} email={email} getIdForUpdate={getIdForUpdate} setActive={setActive}/>
             </div>
         </div>
     );

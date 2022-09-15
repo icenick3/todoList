@@ -38,7 +38,6 @@ const Task = ({status, getId, task, getIdForUpdate, getStatus}) => {
                         </filter>
                     </defs>
                 </svg>
-
                 <button style={{filter: status}} className="gooey-button" onClick={()=>{deleteTask()}}>
                     Delete
                     {status !== 'none' && <span className="bubbles">

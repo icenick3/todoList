@@ -5,7 +5,7 @@ import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../firebase";
 import './FormForChangeTask.css'
 
-const FormForChangeTask = ({getStatus, task, getIdForUpdate, email}) => {
+const FormForChangeTask = ({setActive, getStatus, task, getIdForUpdate, email}) => {
 
     const {register, reset, handleSubmit} = useForm();
     const [changedTask, setChangedTask] = useState({name: '', description: '', time: '', date: ''})
@@ -51,9 +51,12 @@ const FormForChangeTask = ({getStatus, task, getIdForUpdate, email}) => {
                 </div>
                 <textarea id="description" cols="30" rows="10" {...register('description')} value={changedTask.description} onChange={(e) => setChangedTask({...changedTask, description: e.target.value})}></textarea>
                 <div className={'groupDate'}>
-                    <div><input type="date" {...register('date')} value={changedTask.date} onChange={(e) => setChangedTask({...changedTask, date: e.target.value})} /></div>
+                    <div><input type="date"  lang={'en-Us'} {...register('date')} value={changedTask.date} onChange={(e) => setChangedTask({...changedTask, date: e.target.value})} /></div>
                     <div><input id="time" type="time" {...register('time')} value={changedTask.time} onChange={(e) => setChangedTask({...changedTask, time: e.target.value})}/></div>
-                    <button id="buttonAdd" onClick={() => update(task.id)}>Add Task</button>
+                    <button id="buttonAdd" onClick={() => {
+                        setActive(false)
+                        update(task.id)
+                    }}>Edit</button>
                 </div>
             </form>
 

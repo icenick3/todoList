@@ -4,7 +4,7 @@
     width: 350px;
     height: 500px;
     overflow: hidden;
-    background-image: url("https://i.yapx.ru/T4BFL.png");
+    background-image: url("../../../images/neon-tropical-monstera-leaf-banner_53876-138943.jpg") ;
     border-radius: 10px;
     background-size: cover;
     box-shadow: 5px 20px 50px #000;
@@ -82,4 +82,8 @@
     transform: scale(.6);
 }
 
+.error {
+    color: red;
+    text-align: center;
+}
 
