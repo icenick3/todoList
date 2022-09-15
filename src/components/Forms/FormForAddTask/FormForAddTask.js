@@ -8,7 +8,7 @@ import {db} from "../../../firebase";
 import {setTask} from "../../../store/slices/taskSlice";
 
 
-const FormForAddTask = ({idForDelete, idForUpdate}) => {
+const FormForAddTask = ({setActive,idForDelete, idForUpdate, getStatus}) => {
 
     const [target, setTarget] = useState({name: null, description: null, time: null, date: null})
     const {handleSubmit, reset, register} = useForm()
@@ -54,16 +54,27 @@ const FormForAddTask = ({idForDelete, idForUpdate}) => {
             date: e.date
         })
         reset()
+        getStatus('url("#gooey")')
+        setActive(false)
+
     }
 
     return (
         <div className={'formForAddTask'}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div><input type="text" placeholder={'Name'} {...register('name')} /></div>
-                <div> <input type="text" placeholder={'Description'} {...register('description')} /></div>
-                <div><input type="date" {...register('date')} /></div>
-                <div><input type="time" {...register('time')} /></div>
-                <button>Add Task</button>
+                <div className="centered">
+                    <div className="group">
+                        <input id="name" type="text" required="required" placeholder={'Name'} {...register('name')}/>
+                        <label id={'label'} htmlFor="name">Name</label>
+                        <div className="bar"></div>
+                    </div>
+                </div>
+                <textarea id="description" placeholder={'Description'} cols="30" rows="10" {...register('description')} ></textarea>
+                <div className={'groupDate'}>
+                    <div><input type="date" {...register('date')} /></div>
+                    <div><input id="time" type="time" {...register('time')} /></div>
+                    <button id="buttonAdd">Add Task</button>
+                </div>
             </form>
         </div>
     );

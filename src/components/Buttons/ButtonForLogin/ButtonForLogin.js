@@ -5,7 +5,7 @@ import './ButtonForLogin.css'
 import ModalWindowForRegistration from "../../ModalWindows/ModalWindowForRegistration/ModalWindowForRegistration";
 import ButtonForLogout from "../ButtonForLogout/ButtonForLogout";
 
-const ButtonForLogin = ({getObj}) => {
+const ButtonForLogin = () => {
 
     const [modalActive, setModalActive] = useState(false)
     const {email} = useSelector(state => state.user)
@@ -14,7 +14,6 @@ const ButtonForLogin = ({getObj}) => {
         <div>
             {!email && <button className={'button-login'} onClick={()=> {
                 setModalActive(true)
-                getObj({status: false, number: Math.random()})
             }}>log In</button>}
             {email && <ButtonForLogout/>}
             <ModalWindowForRegistration active={modalActive} setActive={setModalActive} />

@@ -2,12 +2,12 @@ import React from 'react';
 
 import FormForAddTask from "../../Forms/FormForAddTask/FormForAddTask";
 import './ModalWindowForAddTask.css'
-import MessageForNonLogin from "../../MessageForNon-login/MessageForNon-login";
 
-const ModalWindowForAddTask = ({idForUpdate, idForDelete, active, setActive, email}) => {
+const ModalWindowForAddTask = ({getStatus, idForUpdate, idForDelete, active, setActive, email}) => {
 
     const onClick = () => {
         setActive(false)
+        getStatus('url("#gooey")')
     }
 
     return (
@@ -16,8 +16,7 @@ const ModalWindowForAddTask = ({idForUpdate, idForDelete, active, setActive, ema
                      onClick={e => {
                          e.stopPropagation()
                      }}>
-                    {email && <FormForAddTask idForDelete={idForDelete} idForUpdate={idForUpdate}/>}
-                    {!email &&<MessageForNonLogin/>}
+                    {email && <FormForAddTask idForDelete={idForDelete} idForUpdate={idForUpdate} getStatus={getStatus} setActive={setActive}/>}
                 </div>
             </div>
     );

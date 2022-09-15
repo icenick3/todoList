@@ -9,23 +9,25 @@ body {
     background-image: url("https://img.freepik.com/free-photo/aesthetic-leaf-frame-background-neon-botanical-design_53876-128292.jpg?w=1380&t=st=1663166048~exp=1663166648~hmac=402e7b4dd39735b3555a623ae5f28472e6ce92e4edf9e07066a05c760b75cfc6");
 }
 
-/*input[type = 'date']{*/
-/*    width: 188px;*/
-/*    background: dodgerblue;*/
-/*    padding: 15px;*/
-/*    position: absolute;*/
-/*    transform: translate(-50%, -50%);*/
-/*    color: white;*/
-/*    font-family: "Roboto Mono", monospace;*/
-/*    font-size: 1em;*/
-/*    border: none;*/
-/*    outline: none;*/
-/*    border-radius: 5px;*/
-/*}*/
+input[type = 'date']{
+    margin-top: 29px;
+    margin-left: 107px;
+    width: 188px;
+    background: #FF06B7;
+    padding: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 10px;
+}
 
-/*::-webkit-calendar-picker-indicator{*/
-/*    background-color: white;*/
-/*    padding: 5px;*/
-/*    cursor: pointer;*/
-/*    border-radius: 3px;*/
-/*}*/
+::-webkit-calendar-picker-indicator{
+    background-color: #FF06B7;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}

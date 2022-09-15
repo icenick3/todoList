@@ -4,19 +4,17 @@ import ModalWindowForAddTask from "../../ModalWindows/ModalWindowForAddTask/Moda
 import './ButtonForAddTask.css'
 import {useSelector} from "react-redux";
 
-const ButtonForAddTask = ({idForUpdate, idForDelete, obj}) => {
+const ButtonForAddTask = ({getStatus, idForUpdate, idForDelete}) => {
 
     const [modalActive, setModalActive] = useState(false)
     const {email} = useSelector(state => state.user)
 
-    useEffect(() => {
-    if (obj.status === false){
-        setModalActive(false)
-    }
-    }, [obj.number])
 
     const animateButton = (e) => {
-        setModalActive(true)
+        if (email){
+            setModalActive(true)
+        }
+        getStatus('none')
         e.target.classList.remove("animate");
         e.target.classList.add("animate");
         setTimeout(function () {
@@ -28,7 +26,7 @@ const ButtonForAddTask = ({idForUpdate, idForDelete, obj}) => {
         <div>
             <button className={"bubbly-button"} onClick={animateButton}>Add Task</button>
             <ModalWindowForAddTask active={modalActive} setActive={setModalActive} idForDelete={idForDelete}
-                                   idForUpdate={idForUpdate} email={email}/>
+                                   idForUpdate={idForUpdate} email={email} getStatus={getStatus}/>
         </div>
     );
 };

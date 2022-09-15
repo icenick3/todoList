@@ -3,8 +3,9 @@ import {useForm} from "react-hook-form";
 import {doc, updateDoc} from "firebase/firestore";
 
 import {db} from "../../../firebase";
+import './FormForChangeTask.css'
 
-const FormForChangeTask = ({task, getIdForUpdate, email}) => {
+const FormForChangeTask = ({getStatus, task, getIdForUpdate, email}) => {
 
     const {register, reset, handleSubmit} = useForm();
     const [changedTask, setChangedTask] = useState({name: '', description: '', time: '', date: ''})
@@ -20,6 +21,7 @@ const FormForChangeTask = ({task, getIdForUpdate, email}) => {
 
     const onSubmit = () => {
         reset()
+        getStatus('url("#gooey")')
     }
 
     const update = (id) => {
@@ -38,18 +40,23 @@ const FormForChangeTask = ({task, getIdForUpdate, email}) => {
         }
     }
     return (
-        <div>
+        <div className={'formChange'}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register("name")} value={changedTask.name}
-                       onChange={(e) => setChangedTask({...changedTask, name: e.target.value})}/>
-                <input type="text" {...register('description')} value={changedTask.description}
-                       onChange={(e) => setChangedTask({...changedTask, description: e.target.value})}/>
-                <input type="time" {...register('time')} value={changedTask.time}
-                       onChange={(e) => setChangedTask({...changedTask, time: e.target.value})}/>
-                <input type="date" {...register('date')} value={changedTask.date}
-                       onChange={(e) => setChangedTask({...changedTask, date: e.target.value})}/>
-                <button onClick={() => update(task.id)}>Change</button>
+                <div className="centered">
+                    <div className="group">
+                        <input id="name" type="text" required="required"  {...register('name')} value={changedTask.name} onChange={(e) => setChangedTask({...changedTask, name: e.target.value})}/>
+                        <label id={'label'} htmlFor="name">Name</label>
+                        <div className="bar"></div>
+                    </div>
+                </div>
+                <textarea id="description" cols="30" rows="10" {...register('description')} value={changedTask.description} onChange={(e) => setChangedTask({...changedTask, description: e.target.value})}></textarea>
+                <div className={'groupDate'}>
+                    <div><input type="date" {...register('date')} value={changedTask.date} onChange={(e) => setChangedTask({...changedTask, date: e.target.value})} /></div>
+                    <div><input id="time" type="time" {...register('time')} value={changedTask.time} onChange={(e) => setChangedTask({...changedTask, time: e.target.value})}/></div>
+                    <button id="buttonAdd" onClick={() => update(task.id)}>Add Task</button>
+                </div>
             </form>
+
         </div>
     );
 };

@@ -4,19 +4,20 @@ import ModalWindowForChangeTask from "../../ModalWindows/ModalWindowForChangeTas
 import "./ButtonForChangeTask.css"
 
 
-const ButtonForChangeTask = ({task, getIdForUpdate, email}) => {
+const ButtonForChangeTask = ({status, task, getIdForUpdate, email, getStatus}) => {
 
     const [active, setActive] = useState(false)
 
     const onClick = () => {
         setActive(true)
+        getStatus('none')
     }
 
     return (
         <div>
-            <button id={'gooey-button-second'} onClick={onClick}>
+            <button style={{filter: status}} id={'gooey-button-second'} onClick={onClick}>
                 Edit
-                <span className="bubbles">
+                {status !== 'none' && <span className="bubbles">
             <span className="bubble"></span>
             <span className="bubble"></span>
             <span className="bubble"></span>
@@ -27,10 +28,10 @@ const ButtonForChangeTask = ({task, getIdForUpdate, email}) => {
             <span className="bubble"></span>
             <span className="bubble"></span>
             <span className="bubble"></span>
-        </span>
+        </span>}
             </button>
             <ModalWindowForChangeTask active={active} setActive={setActive} task={task}
-                                      getIdForUpdate={getIdForUpdate} email={email}/>
+                                      getIdForUpdate={getIdForUpdate} email={email} getStatus={getStatus}/>
         </div>
     );
 };

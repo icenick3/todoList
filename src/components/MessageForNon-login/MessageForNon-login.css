@@ -3,72 +3,10 @@
     padding: 20px;
     color: white;
     font-family: "Oswald" , sans-serif;
+
 }
 .mainMessageBlock{
-    margin-top: 120px;
-
-}
-.messageDiv{
-    display: inline-block;
-    margin-left: 100px;
-    margin-top: -300px;
-}
-
-.things{
-    margin-left: 330px ;
-    margin-bottom: -250px;
-}
-
-.things > .content {
-    float: left;
-    width: 50%;
-    box-sizing: border-box;
-    position: relative;
-    transform: rotate(180deg);
+    margin-top: 200px;
 }
 
 
-.arrow {
-    position: relative;
-    margin: 0 auto;
-    width: 100px;
-}
-
-.arrow .curve {
-    border: 9px solid;
-    border-color: transparent transparent transparent #e60074;
-    height: 360px;
-    width: 220px;
-    border-radius: 230px 0 0 150px;
-
-}
-
-.arrow .point {
-    position: absolute;
-    left: 40px;
-    top: 315px;
-
-}
-
-.arrow .point:before, .arrow .point:after {
-    border: 5px solid #e60074;
-    height: 25px;
-    content: "";
-    background: #e60074 ;
-    position: absolute;
-    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5)
-}
-
-.arrow .point:before {
-    top: -3px;
-    left: -12px;
-    transform:rotate(-74deg);
-
-
-}
-
-.arrow .point:after {
-    top: -12px;
-    left: 1px;
-    transform:rotate(4deg);
-}

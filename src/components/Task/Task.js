@@ -6,10 +6,7 @@ import {db} from "../../firebase";
 import './Task.css'
 import ButtonForChangeTask from "../Buttons/ButtonForChangeTask/ButtonForChangeTask";
 
-
-
-
-const Task = ({getId, task, getIdForUpdate}) => {
+const Task = ({status, getId, task, getIdForUpdate, getStatus}) => {
 
     const {email} = useSelector(state => state.user)
     const colors = ['#4C0033' , '#AF0171']
@@ -42,9 +39,11 @@ const Task = ({getId, task, getIdForUpdate}) => {
                     </defs>
                 </svg>
 
-                <button className="gooey-button" onClick={()=>{deleteTask()}}>
+                <button style={{filter: status}} className="gooey-button" onClick={()=>{deleteTask()}}>
                     Delete
-                    <span className="bubbles">
+                    {status !== 'none' && <span className="bubbles">
+            <span className="bubble"></span>
+            <span  className="bubble"></span>
             <span className="bubble"></span>
             <span className="bubble"></span>
             <span className="bubble"></span>
@@ -53,11 +52,9 @@ const Task = ({getId, task, getIdForUpdate}) => {
             <span className="bubble"></span>
             <span className="bubble"></span>
             <span className="bubble"></span>
-            <span className="bubble"></span>
-            <span className="bubble"></span>
-        </span>
+        </span>}
                 </button>
-                <ButtonForChangeTask task={task} getIdForUpdate={getIdForUpdate} email={email}/>
+                <ButtonForChangeTask task={task} getIdForUpdate={getIdForUpdate} email={email} status={status} getStatus={getStatus}/>
             </div>
         </div>
     );
